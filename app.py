@@ -28,6 +28,12 @@ class DocumentListResponse(BaseModel):
     documents: list[str]
 
 
+@app.get("/")
+def root():
+    """Root endpoint — redirects to docs."""
+    return {"message": "Banking Compliance Document Assistant API", "docs": "/docs"}
+
+
 @app.get("/health")
 def health_check():
     """Health check endpoint."""

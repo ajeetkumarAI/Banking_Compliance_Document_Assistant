@@ -3,18 +3,13 @@ from langchain_community.vectorstores.azuresearch import AzureSearch
 from langchain_core.embeddings import Embeddings
 from langchain_core.vectorstores import VectorStoreRetriever
 
-from src.config_loader import get_azure_search_config
+from src.config_loader import get_azure_search_config, load_config
 
 # Override LangChain's default field names with the ones from config.yaml
 # so they match the existing Azure AI Search index schema.
+# Uses load_config() (file-only) to avoid requiring env vars at import time.
 
-
-# FIELDS_ID → "chunk_id" (your key field)
-# FIELDS_CONTENT → "chunk" (your text content field)
-# FIELDS_CONTENT_VECTOR → "text_vector" (your embedding vector field)
-
-
-_fields = get_azure_search_config().get("fields", {})
+_fields = load_config().get("azure_search", {}).get("fields", {})
 if _fields.get("id"):
     _az_module.FIELDS_ID = _fields["id"]
 if _fields.get("content"):
