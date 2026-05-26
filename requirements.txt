@@ -1,0 +1,13 @@
+langchain-community
+langchain-core
+langchain-text-splitters
+langchain-openai
+pymupdf
+numpy
+fastapi
+uvicorn[standard]
+python-dotenv
+azure-storage-blob
+azure-search-documents
+azure-identity
+pyyaml

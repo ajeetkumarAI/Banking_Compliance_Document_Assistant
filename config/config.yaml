@@ -1,0 +1,48 @@
+# Banking Compliance Document Assistant Configuration — Azure Edition
+
+# Azure OpenAI settings
+azure_openai:
+  api_version: "2024-06-01"
+  chat_deployment: "gpt-4o"                # your Azure OpenAI chat deployment name
+  embedding_deployment: "text-embedding-ada-002"  # your Azure OpenAI embedding deployment name
+  temperature: 0
+
+# Azure Blob Storage settings
+azure_blob_storage:
+  container_name: "mytempblob1"          # your blob container name
+
+# Azure AI Search settings
+# azure_search:
+#   index_name: "rag-1778943248597"
+#   fields:
+#     id: "uid"
+#     content: "snippet"
+#     content_vector: "snippet_vector"
+
+# Azure AI Search settings
+azure_search:
+  index_name: "rag-1779812122449"
+  fields:
+    id: "chunk_id"
+    content: "chunk"
+    content_vector: "text_vector"
+
+# azure_ai_search:
+#   # Set via env vars: AZURE_SEARCH_ENDPOINT, AZURE_SEARCH_API_KEY
+#   index_name: hr-documents-index
+#   fields:
+#     chunk_id: "chunk_id"                # key field
+#     parent_id: "parent_id"              # source document identifier
+#     chunk: "chunk"                      # text content
+#     title: "title"                      # source file name
+#     text_vector: "text_vector"          # embedding vector (1536-d)
+
+# Chunking settings
+chunking:
+  chunk_size: 1000
+  chunk_overlap: 300
+
+# Retriever settings
+retriever:
+  search_type: mmr
+  k: 6
